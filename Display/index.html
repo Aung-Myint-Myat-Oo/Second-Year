@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+
+    <link rel="stylesheet" href="CSS.css">
+
+    <script type="text/javascript">
+
+
+
+        var changMainText=function changMainText() {
+            var userText=document.getElementById('TextBox').value;
+            document.getElementById('mainText').innerHTML=userText;
+            document.getElementById('Popup1').style.display='none';
+        };
+
+        var changMainColor=function changMainColor() {
+            var userColor=document.getElementById('ColorBox').value;
+            var userText=document.getElementById('mainText');
+            var x="color:"+userColor;
+            userText.setAttribute("style",x);
+            document.getElementById('Popup2').style.display='none';
+        };
+
+        function changMainFont(userFont){
+            var userText=document.getElementById('mainText');
+            userText.setAttribute("style","font-family:"+userFont);
+            document.getElementById('Popup3').style.display='none';
+        };
+    </script>
+
+</head>
+<body>
+<div id="Main">
+
+    <p id="mainText">
+        Mingalaba
+    </p>
+
+
+</div>
+    <ul>
+        <li id="text_li">
+            TEXT
+        </li>
+        <li  id="color_li">
+            COLOR
+        </li>
+        <li  id="font_li">
+            FONT
+        </li>
+        <li  id="about_li" class="about">
+            ABOUT
+        </li>
+    </ul>
+
+
+<div id="Popup1">
+    <input type="text" id="TextBox" placeholder="ENTER YOUR TEXT HERE">
+    <input type="button" value="CHANGE" id="Popup1_btn">
+</div>
+
+<div id="Popup2">
+    <input type="color" id="ColorBox" value="#000000">
+    <input type="button" id="Popup2_btn" value="CHANGE">
+</div>
+
+<div id="Popup3">
+    <div class="font" onclick="changMainFont('Prime')">Default</div>
+    <div class="font" onclick="changMainFont('Courier New')">Courier</div>
+    <div class="font" onclick="changMainFont('Matura MT Script Capitals')">Mature Mt Scripts Capitals</div>
+    <div class="font" onclick="changMainFont('French Script MT')"> French Script MT</div>
+    <div class="font" onclick="changMainFont('Edwardian Script ITC')"> Edwardian Script ITC</div>
+    <div class="font" onclick="changMainFont('Dovahkiin')"> Dovahkiin</div>
+   
+</div>
+
+<div id="about">
+    <div id="inner-about">
+        Hlo There!</br>
+
+        Found some bug huh?<br>
+        Kinda fun, right >_<<br><br>
+        <span>2CS-92@Section[B]</span><br><br>
+
+        <a href="tel:+959788561322">Call me</a><br>
+        (OR)<br>
+        <a href="mailto:solidifyarmor@gmail.com">Text me</a>
+
+    </div>
+
+</div>
+
+<script>
+        var addHandler=function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        };}
+
+        addHandler(window,"load",function(event){
+            alert("This project may not compitable with IE");
+        });
+
+        addHandler(document.getElementById('Main'),'click',function(){
+            document.getElementById('Popup1').style.display='none';
+            document.getElementById('Popup2').style.display='none';
+            document.getElementById('Popup3').style.display='none'
+        });
+
+        addHandler(document.getElementById('text_li'),'click',function(){
+            document.getElementById('Popup1').style.display='block';
+        });
+        addHandler(document.getElementById('color_li'),'click',function(){
+            document.getElementById('Popup2').style.display='block';
+        });
+        addHandler(document.getElementById('font_li'),'click',function(){
+            document.getElementById('Popup3').style.display='block';
+        });
+        addHandler(document.getElementById('about_li'),'click',function(){
+            document.getElementById('about').style.display='block';
+        });
+        addHandler(document.getElementById('about'),'click',function(){
+            document.getElementById('about').style.display='none';
+        });
+
+        addHandler(document.getElementById('Popup1_btn'),'click',changMainText);
+        addHandler(document.getElementById('Popup2_btn'),'click',changMainColor);
+
+</script>
+
+</body>
+</html>
